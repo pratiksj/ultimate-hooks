@@ -58,7 +58,7 @@ const App = () => {
     <div>
       <h2>notes</h2>
       <form onSubmit={handleNoteSubmit}>
-        <input {...content} />
+        <input type ={content.type} value={content.value} onChange= {content.onChange} />
         <button>create</button>
       </form>
       {notes.map(n => <p key={n.id}>{n.content}</p>)}
