@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import noteService from "./service/index"
 
 const useField = (type) => {
   const [value, setValue] = useState('')
@@ -18,7 +18,9 @@ const useField = (type) => {
 const useResource = (baseUrl) => {
   const [resources, setResources] = useState([])
 
-  // ...
+useEffect(()=>{
+  noteService.getAll(baseUrl).then(data=>setResources(data))
+},)
 
   const create = (resource) => {
     // ...
