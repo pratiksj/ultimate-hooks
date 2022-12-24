@@ -15,15 +15,15 @@ const useField = (type) => {
   }
 }
 
-const useResource = (baseUrl) => {
+const useResource = (url) => {
   const [resources, setResources] = useState([])
 
 useEffect(()=>{
-  noteService.getAll(baseUrl).then(data=>setResources(data))
+  noteService.getAll(url).then(data=>setResources(data))
 },)
 
   const create = (resource) => {
-    // ...
+    noteService.create(resource,url).then(response=>setResources(resources.concat(response)))
   }
 
   const service = {
@@ -31,7 +31,8 @@ useEffect(()=>{
   }
 
   return [
-    resources, service
+    resources, 
+    service,
   ]
 }
 
